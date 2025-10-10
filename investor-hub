@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Investor Hub — BiaRobotics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root{ --bg:#0b0d12; --fg:#f5f5f5; --muted:#9ca3af; --line:#232832; }
+    html,body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui;-webkit-font-smoothing:antialiased}
+    .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line)}
+    .btn{background:#fff;color:#000;border-radius:10px;padding:10px 18px;font-weight:700}
+    .btn:hover{filter:brightness(0.9)}
+    a.underline:hover{opacity:.9}
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="p-6 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="/" class="font-bold tracking-wide text-lg">← BiaRobotics</a>
+      <div class="text-sm text-white/70">Private • Authorized Investors Only</div>
+    </div>
+  </header>
+
+  <main class="flex-grow px-4 py-12">
+    <section class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <h1 class="text-3xl md:text-4xl font-extrabold">Investor Hub</h1>
+        <p class="mt-2 text-white/70 max-w-2xl">
+          Robotics-enabled housing investments. View active opportunities, documents, and submit allocation requests.
+        </p>
+      </div>
+
+      <!-- Current Opportunities -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Fund / Deal Card -->
+        <div class="glass p-6 rounded-2xl">
+          <h2 class="text-xl font-semibold">3D Printed Housing Fund I</h2>
+          <p class="text-sm text-white/70 mt-2">Target: $10M • Pref: 8–10% • Split: 70/30</p>
+          <div class="mt-3 space-y-2 text-sm">
+            <a class="underline" href="#" target="_blank" rel="noopener">One-Pager (PDF) →</a><br/>
+            <a class="underline" href="#" target="_blank" rel="noopener">Investor Deck →</a>
+          </div>
+          <a href="https://formspree.io/f/meorrrol" target="_blank" class="btn mt-4 inline-block">Request Allocation</a>
+        </div>
+
+        <div class="glass p-6 rounded-2xl">
+          <h2 class="text-xl font-semibold">Modular Suburban Communities</h2>
+          <p class="text-sm text-white/70 mt-2">Target: $5M • Pref: 9% • Split: 70/30</p>
+          <div class="mt-3 space-y-2 text-sm">
+            <a class="underline" href="#" target="_blank" rel="noopener">Summary Sheet →</a><br/>
+            <a class="underline" href="#" target="_blank" rel="noopener">OM / Deck →</a>
+          </div>
+          <a href="https://formspree.io/f/meorrrol" target="_blank" class="btn mt-4 inline-block">Request Allocation</a>
+        </div>
+
+        <div class="glass p-6 rounded-2xl">
+          <h2 class="text-xl font-semibold">Hybrid: 3D Print + Modular JV</h2>
+          <p class="text-sm text-white/70 mt-2">Target: $3M • Equity in IP + Returns</p>
+          <div class="mt-3 space-y-2 text-sm">
+            <a class="underline" href="#" target="_blank" rel="noopener">Term Sheet (PDF) →</a><br/>
+            <a class="underline" href="#" target="_blank" rel="noopener">Technical Brief →</a>
+          </div>
+          <a href="https://formspree.io/f/meorrrol" target="_blank" class="btn mt-4 inline-block">Request Allocation</a>
+        </div>
+      </div>
+
+      <!-- Documents & Updates -->
+      <div class="grid md:grid-cols-2 gap-6 mt-10">
+        <div class="glass p-6 rounded-2xl">
+          <h3 class="font-semibold">Documents</h3>
+          <ul class="mt-2 text-sm text-white/80 space-y-2">
+            <li><a class="underline" href="#" target="_blank" rel="noopener">Master NDA (DocuSign) →</a></li>
+            <li><a class="underline" href="#" target="_blank" rel="noopener">Subscriptions & PPM (private link) →</a></li>
+            <li><a class="underline" href="#" target="_blank" rel="noopener">Due Diligence Folder →</a></li>
+          </ul>
+        </div>
+        <div class="glass p-6 rounded-2xl">
+          <h3 class="font-semibold">Updates</h3>
+          <ul class="mt-2 text-sm text-white/80 space-y-2">
+            <li><a class="underline" href="https://substack.com/@carldavid3" target="_blank" rel="noopener">Investor Notes on Substack →</a></li>
+            <li><a class="underline" href="mailto:carl@biarobotics.com">Book time with the GP →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-xs text-white/50 mt-10">Questions? <a class="underline" href="mailto:carl@biarobotics.com">carl@biarobotics.com</a></p>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 text-center text-xs text-white/50 py-6">
+    © <span id="y"></span> BiaRobotics
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
