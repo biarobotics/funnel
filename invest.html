@@ -1,41 +1,58 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invest in Robotics-Enabled Housing — BiaRobotics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --brand:#7c3aed; --brand2:#06b6d4; --glass:rgba(255,255,255,0.06); --border:rgba(255,255,255,0.12); }
+    html,body{height:100%;background:#0b0d12;color:#e5e7eb;font-family:Inter,system-ui;-webkit-font-smoothing:antialiased}
+    .glass{background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border)}
   </style>
 </head>
 <body>
-<p class="p1">## 📂 File 3 — `invest.html`</p>
-<p class="p1">```html</p>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Invest in Housing — BiaRobotics&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="bg-gray-900 text-white"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;main class="p-10 max-w-3xl mx-auto"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="index.html" class="text-sm text-cyan-400"&gt;← Back to Hub&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 class="text-3xl font-bold mb-6"&gt;Invest in Funds &amp; Syndications&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;form class="grid gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;input class="p-3 rounded bg-gray-800" placeholder="Full Name" required /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;input class="p-3 rounded bg-gray-800" type="email" placeholder="Email" required /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="flex items-center gap-2 text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="checkbox" /&gt; Accredited Investor</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="bg-gradient-to-r from-violet-500 to-cyan-400 p-3 rounded font-semibold"&gt;Join Investor List&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-<p class="p1">```</p>
+  <main class="mx-auto max-w-5xl px-4 py-12">
+    <a href="/" class="text-sm text-white/70">← Back to Hub</a>
+    <header class="mt-2">
+      <h1 class="text-3xl md:text-4xl font-extrabold">Invest in Funds & Syndications</h1>
+      <p class="mt-3 text-white/80 max-w-2xl">Robotics-enabled housing at scale. Targeted preferred returns and equity participation. Join the list to receive private offering materials (accredited investors).</p>
+    </header>
+
+    <section class="mt-10 grid md:grid-cols-2 gap-6 items-start">
+      <div class="glass rounded-2xl p-6">
+        <h2 class="text-xl font-semibold">Join Investor List</h2>
+        <form class="mt-4 grid gap-3" onsubmit="event.preventDefault(); alert('Connect to Beehiiv/ConvertKit/Mailchimp.');">
+          <input class="glass rounded-xl px-4 py-3 text-sm" placeholder="Full Name" required />
+          <input class="glass rounded-xl px-4 py-3 text-sm" type="email" placeholder="Email" required />
+          <input class="glass rounded-xl px-4 py-3 text-sm" placeholder="Company / Title" />
+          <label class="flex items-center gap-2 text-sm text-white/80"><input type="checkbox" class="h-4 w-4"/> I confirm I am an accredited investor (or interested in learning more).</label>
+          <button class="mt-2 rounded-xl px-5 py-3 font-semibold bg-gradient-to-r from-violet-500 to-cyan-400">Subscribe</button>
+        </form>
+        <div class="mt-4 text-sm text-white/60">We respect your inbox. Unsubscribe anytime.</div>
+      </div>
+      <aside class="space-y-4">
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-semibold">Focus</h3>
+          <ul class="mt-2 list-disc list-inside text-sm text-white/80 space-y-1">
+            <li>For-sale + BTR communities</li>
+            <li>Sunbelt & growth markets</li>
+            <li>3D printed, modular, hybrid delivery</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-semibold">Next Steps</h3>
+          <ul class="mt-2 list-disc list-inside text-sm text-white/80 space-y-1">
+            <li>Intro call (Calendly)</li>
+            <li>NDA / data room access</li>
+            <li>Review pipeline + allocations</li>
+          </ul>
+          <a href="#" class="mt-3 inline-block rounded-xl border border-white/15 px-4 py-2 text-sm hover:bg-white/5">Book a 10-min intro</a>
+        </div>
+      </aside>
+    </section>
+  </main>
 </body>
 </html>
