@@ -3,56 +3,128 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invest in Robotics-Enabled Housing — BiaRobotics</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <title>Invest — BiaRobotics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    :root { --brand:#7c3aed; --brand2:#06b6d4; --glass:rgba(255,255,255,0.06); --border:rgba(255,255,255,0.12); }
-    html,body{height:100%;background:#0b0d12;color:#e5e7eb;font-family:Inter,system-ui;-webkit-font-smoothing:antialiased}
-    .glass{background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border)}
+    :root {
+      --bg:#0b0d12;
+      --fg:#f5f5f5;
+      --muted:#9ca3af;
+      --line:#232832;
+      --panel:#12151d;
+    }
+    html, body {
+      background:var(--bg);
+      color:var(--fg);
+      font-family:Inter, system-ui;
+      -webkit-font-smoothing: antialiased;
+    }
+    .glass {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+    }
+    .btn {
+      background: #fff;
+      color: #000;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-weight: 700;
+    }
+    .btn:hover { filter: brightness(0.9); }
   </style>
 </head>
-<body>
-  <main class="mx-auto max-w-5xl px-4 py-12">
-    <a href="/" class="text-sm text-white/70">← Back to Hub</a>
-    <header class="mt-2">
-      <h1 class="text-3xl md:text-4xl font-extrabold">Invest in Funds & Syndications</h1>
-      <p class="mt-3 text-white/80 max-w-2xl">Robotics-enabled housing at scale. Targeted preferred returns and equity participation. Join the list to receive private offering materials (accredited investors).</p>
-    </header>
 
-    <section class="mt-10 grid md:grid-cols-2 gap-6 items-start">
-      <div class="glass rounded-2xl p-6">
-        <h2 class="text-xl font-semibold">Join Investor List</h2>
-        <form class="mt-4 grid gap-3" onsubmit="event.preventDefault(); alert('Connect to Beehiiv/ConvertKit/Mailchimp.');">
-          <input class="glass rounded-xl px-4 py-3 text-sm" placeholder="Full Name" required />
-          <input class="glass rounded-xl px-4 py-3 text-sm" type="email" placeholder="Email" required />
-          <input class="glass rounded-xl px-4 py-3 text-sm" placeholder="Company / Title" />
-          <label class="flex items-center gap-2 text-sm text-white/80"><input type="checkbox" class="h-4 w-4"/> I confirm I am an accredited investor (or interested in learning more).</label>
-          <button class="mt-2 rounded-xl px-5 py-3 font-semibold bg-gradient-to-r from-violet-500 to-cyan-400">Subscribe</button>
-        </form>
-        <div class="mt-4 text-sm text-white/60">We respect your inbox. Unsubscribe anytime.</div>
-      </div>
-      <aside class="space-y-4">
-        <div class="glass rounded-2xl p-6">
-          <h3 class="font-semibold">Focus</h3>
-          <ul class="mt-2 list-disc list-inside text-sm text-white/80 space-y-1">
-            <li>For-sale + BTR communities</li>
-            <li>Sunbelt & growth markets</li>
-            <li>3D printed, modular, hybrid delivery</li>
-          </ul>
-        </div>
-        <div class="glass rounded-2xl p-6">
-          <h3 class="font-semibold">Next Steps</h3>
-          <ul class="mt-2 list-disc list-inside text-sm text-white/80 space-y-1">
-            <li>Intro call (Calendly)</li>
-            <li>NDA / data room access</li>
-            <li>Review pipeline + allocations</li>
-          </ul>
-          <a href="#" class="mt-3 inline-block rounded-xl border border-white/15 px-4 py-2 text-sm hover:bg-white/5">Book a 10-min intro</a>
-        </div>
-      </aside>
-    </section>
+<body class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="p-6 border-b border-white/10">
+    <a href="/" class="font-bold tracking-wide text-lg">← Back to Home</a>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex items-center justify-center px-4 py-12">
+    <div class="glass rounded-2xl p-8 max-w-lg w-full">
+      <h1 class="text-2xl font-bold mb-4">Invest in BiaRobotics Projects</h1>
+      <p class="text-white/70 mb-6">
+        Join our investor network for robotics-enabled housing projects across the U.S.
+        Fill out this form to receive deal flow, investor briefs, and project invitations.
+      </p>
+
+      <!-- Investor Form -->
+      <form action="https://formspree.io/f/meorrrol" method="POST" class="grid gap-4">
+        <label class="text-sm">
+          Full Name
+          <input type="text" name="name" required
+                 class="glass mt-1 w-full rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white/30">
+        </label>
+
+        <label class="text-sm">
+          Email
+          <input type="email" name="email" required
+                 class="glass mt-1 w-full rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white/30">
+        </label>
+
+        <label class="text-sm">
+          Phone (optional)
+          <input type="text" name="phone"
+                 class="glass mt-1 w-full rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white/30">
+        </label>
+
+        <label class="text-sm">
+          Investment Range
+          <select name="investment_range" required
+                  class="glass mt-1 w-full rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white/30">
+            <option value="">Select range</option>
+            <option value="Under $250K">Under $250K</option>
+            <option value="$250K – $1M">$250K – $1M</option>
+            <option value="$1M – $5M">$1M – $5M</option>
+            <option value="$5M+">$5M+</option>
+          </select>
+        </label>
+
+        <label class="text-sm">
+          Accredited Investor?
+          <select name="accredited" required
+                  class="glass mt-1 w-full rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white/30">
+            <option value="">Select one</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+
+        <label class="text-sm">
+          Message or Focus Areas
+          <textarea name="message" rows="4"
+                    class="glass mt-1 w-full rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
+                    placeholder="Tell us your investment goals or focus areas..."></textarea>
+        </label>
+
+        <!-- Meta -->
+        <input type="hidden" name="_subject" value="Investor Inquiry — BiaRobotics">
+        <input type="hidden" name="_replyto" value="carl@biarobotics.com">
+        <input type="text" name="_gotcha" style="display:none">
+        <input type="hidden" name="_redirect" value="/success.html">
+
+        <button type="submit" class="btn mt-2">Join Investor List →</button>
+      </form>
+
+      <p class="mt-6 text-xs text-white/50 text-center">
+        All submissions go directly to <a href="mailto:carl@biarobotics.com" class="underline">carl@biarobotics.com</a>
+      </p>
+    </div>
   </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 text-center text-xs text-white/50 py-6">
+    © <span id="y"></span> BiaRobotics
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
