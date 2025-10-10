@@ -1,45 +1,109 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Building the Future of Housing — JV • Invest • Build</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --brand:#7c3aed; --brand2:#06b6d4; --glass:rgba(255,255,255,0.06); --border:rgba(255,255,255,0.12); }
+    html,body{height:100%;background:#0b0d12;color:#e5e7eb;font-family:Inter,system-ui;-webkit-font-smoothing:antialiased}
+    .gradient-hero{background:radial-gradient(80% 120% at 80% 20%, rgba(124,58,237,.35) 0%, rgba(6,182,212,.18) 40%, rgba(11,13,18,0) 70%),radial-gradient(70% 100% at 20% 0%, rgba(6,182,212,.28) 0%, rgba(124,58,237,.22) 45%, rgba(11,13,18,0) 70%)}
+    .glass{background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border)}
+    .btn-primary{background:linear-gradient(90deg,var(--brand),var(--brand2))}
+    .btn-primary:hover{filter:brightness(1.08)}
+    .card:hover{transform:translateY(-4px);transition:transform .2s ease}
   </style>
 </head>
 <body>
-<p class="p1">## 📂 File 4 — `build.html`</p>
-<p class="p1">```html</p>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Build With Us — BiaRobotics&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="bg-gray-900 text-white"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;main class="p-10 max-w-3xl mx-auto"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="index.html" class="text-sm text-cyan-400"&gt;← Back to Hub&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 class="text-3xl font-bold mb-6"&gt;Want Us to Build?&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;form class="grid gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;input class="p-3 rounded bg-gray-800" placeholder="Full Name" required /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;input class="p-3 rounded bg-gray-800" type="email" placeholder="Email" required /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;select class="p-3 rounded bg-gray-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;option&gt;3D Printing&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;option&gt;Modular (Wood)&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;option&gt;Modular (Steel)&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;option&gt;Hybrid&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;input class="p-3 rounded bg-gray-800" placeholder="# Homes (10+)" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="bg-gradient-to-r from-violet-500 to-cyan-400 p-3 rounded font-semibold"&gt;Request Proposal&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-<p class="p1">```</p>
+  <header class="sticky top-0 z-40 border-b border-white/5 bg-black/40 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" stroke="#a78bfa" stroke-width="1.5"/><path d="M12 7l7 4-7 4-7-4 7-4z" stroke="#22d3ee" stroke-width="1.5"/></svg>
+        </span>
+        <span class="font-semibold tracking-wide">BiaRobotics • Robotics-Enabled Building</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+        <a href="#funnels" class="hover:text-white">Partner Paths</a>
+        <a href="#subscribe" class="hover:text-white">Newsletter</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="gradient-hero">
+    <div class="mx-auto max-w-7xl px-4 pt-16 pb-20 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">Robotics, 3D Printing & Modular at Production Scale</p>
+          <h1 class="text-4xl md:text-5xl font-extrabold">Building the <span class="bg-gradient-to-r from-violet-400 to-cyan-300 bg-clip-text text-transparent">Future of Housing</span></h1>
+          <p class="mt-4 text-white/80 max-w-xl">Joint-venture entitled land, invest in next-gen housing, or hire our team to build using 3D printing, modular (wood/steel), or hybrid systems.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#funnels" class="btn-primary inline-flex items-center gap-2 rounded-xl px-4 py-2.5 font-semibold">Choose Your Path →</a>
+            <a href="#subscribe" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-2.5 font-semibold hover:bg-white/5">Get Investor Updates</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="glass rounded-3xl p-2 md:p-3">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="Futuristic housing" class="rounded-2xl object-cover h-[420px] w-full" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funnels" class="mx-auto max-w-7xl px-4 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8">Choose Your Path</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="/land" class="card glass block rounded-2xl p-6">
+        <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500/20">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12l8-8 8 8" stroke="#a78bfa" stroke-width="1.6"/><path d="M6 10v10h12V10" stroke="#67e8f9" stroke-width="1.6"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold">Have Entitled / Shovel-Ready Land?</h3>
+        <p class="mt-2 text-sm text-white/80">Joint-venture with us. We bring design, capital, and advanced build systems.</p>
+        <div class="mt-4 text-sm font-semibold text-cyan-300">Submit Land →</div>
+      </a>
+      <a href="/invest" class="card glass block rounded-2xl p-6">
+        <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/20">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 16l4-4 4 4 8-8" stroke="#22d3ee" stroke-width="1.8"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold">Invest in Funds / Syndications</h3>
+        <p class="mt-2 text-sm text-white/80">Join our investor list for robotics-enabled housing projects.</p>
+        <div class="mt-4 text-sm font-semibold text-cyan-300">Join Investor List →</div>
+      </a>
+      <a href="/build" class="card glass block rounded-2xl p-6">
+        <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/20">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 17h18M6 13l6-8 6 8" stroke="#34d399" stroke-width="1.6"/><path d="M8 17v4h8v-4" stroke="#67e8f9" stroke-width="1.6"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold">Want Us to Build?</h3>
+        <p class="mt-2 text-sm text-white/80">States: FL, GA, NC, SC, TX, +. Methods: 3D Printing, Modular, Hybrid. Min: 10+ homes.</p>
+        <div class="mt-4 text-sm font-semibold text-cyan-300">Request Proposal →</div>
+      </a>
+    </div>
+  </section>
+
+  <section id="subscribe" class="mx-auto max-w-3xl px-4 pb-12">
+    <div class="glass rounded-3xl p-6 md:p-10">
+      <h3 class="text-xl md:text-2xl font-bold">Get the Brief — Robotics x Housing</h3>
+      <p class="mt-2 text-sm text-white/80">Monthly investor notes, project spotlights, and insights. No spam.</p>
+      <form class="mt-6 grid gap-3 sm:grid-cols-[1fr_auto]" onsubmit="event.preventDefault(); alert('Replace with your email provider embed action.');">
+        <input type="email" required placeholder="you@company.com" class="glass w-full rounded-xl px-4 py-3 text-sm placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-violet-400" />
+        <button class="btn-primary rounded-xl px-5 py-3 font-semibold">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer id="contact" class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 py-10 grid md:grid-cols-3 gap-6 text-sm">
+      <div><div class="font-semibold">BiaRobotics</div><p class="mt-2 text-white/70">Advanced construction at scale. Robotics, 3D printing, modular & hybrid systems.</p></div>
+      <div><div class="font-semibold">Contact</div><ul class="mt-2 space-y-1 text-white/70"><li>Email: <a class="underline" href="mailto:hello@biarobotics.com">hello@biarobotics.com</a></li><li>Investor: <a class="underline" href="mailto:invest@biarobotics.com">invest@biarobotics.com</a></li></ul></div>
+      <div><div class="font-semibold">Shortcuts</div><ul class="mt-2 space-y-1 text-white/70"><li><a href="#funnels" class="hover:text-white">Partner Paths</a></li><li><a href="#subscribe" class="hover:text-white">Newsletter</a></li></ul></div>
+    </div>
+    <div class="text-center text-xs text-white/50 pb-8">© <span id="y"></span> BiaRobotics</div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
