@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Investor Accreditation — Ayzen Capital × Bia Robotics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+  <div class="bg-gray-800 p-8 rounded-2xl shadow-lg w-full max-w-md text-center">
+    <h1 class="text-2xl font-bold mb-4">Accredited Investor Verification</h1>
+    <p class="text-sm text-gray-300 mb-6">
+      Access to investment materials is restricted to verified accredited investors.
+      Please confirm your accreditation status to proceed.
+    </p>
+    <button 
+      class="bg-white text-black px-5 py-2 rounded-lg font-semibold hover:opacity-80"
+      onclick="grantAccess()">
+      ✅ I am an Accredited Investor
+    </button>
+  </div>
+
+  <script>
+    function grantAccess() {
+      // store local access key
+      localStorage.setItem('accredited', 'true');
+      // redirect to investor hub
+      window.location.href = '/investor-hub';
+    }
+  </script>
+</body>
+</html>
