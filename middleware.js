@@ -1,7 +1,5 @@
-// middleware.js
+// middleware.js — gate ONLY private areas (investor-hub, docs)
 import { NextResponse } from 'next/server';
-
-const PROTECTED_PREFIX = '/investor-hub';
 
 function setUnlockCookie(res) {
   res.headers.set(
@@ -11,39 +9,39 @@ function setUnlockCookie(res) {
 }
 
 export function middleware(req) {
-  const { pathname, searchParams } = req.nextUrl;
+  const url = req.nextUrl;
+  const pathname = url.pathname;
 
-  // HARD GUARD: if it's not /investor-hub... bail out immediately.
-  if (!pathname.startsWith(PROTECTED_PREFIX)) return NextResponse.next();
-
-  // Allow the unlock page itself
-  if (pathname === '/unlock' || pathname === '/unlock.html') {
+  // already unlocked?
+  if (req.cookies.get('site_unlocked')?.value === '1') {
     return NextResponse.next();
   }
 
-  // Already unlocked?
-  const unlocked = req.cookies.get('site_unlocked')?.value === '1';
-  if (unlocked) return NextResponse.next();
-
-  // Token unlock (?access=TOKEN)
-  const token = searchParams.get('access');
+  // token-based unlock: https://yoursite/?access=YOUR_TOKEN
+  const token = url.searchParams.get('access');
   const expected = process.env.ACCESS_TOKEN;
   if (token && expected && token === expected) {
-    const res = NextResponse.redirect(new URL(pathname, req.url)); // remove query
+    const res = NextResponse.redirect(new URL(pathname, req.url));
     setUnlockCookie(res);
     return res;
   }
 
-  // Otherwise, send to unlock
-  const unlock = new URL('/unlock.html', req.url);
-  unlock.searchParams.set('r', pathname + (req.nextUrl.search || ''));
-  return NextResponse.redirect(unlock);
+  // Private sections only
+  const isPrivate =
+    pathname === '/investor-hub' ||
+    pathname.startsWith('/investor-hub/') ||
+    pathname.startsWith('/docs/');
+
+  if (isPrivate) {
+    const u = new URL('/unlock.html', req.url);
+    u.searchParams.set('r', pathname + (url.search || ''));
+    return NextResponse.redirect(u);
+  }
+
+  return NextResponse.next();
 }
 
-// EXTRA guard via matcher too
+// !! CRITICAL: run only on private routes
 export const config = {
-  matcher: ['/investor-hub', '/investor-hub/', '/investor-hub/:path*'],
-};
-    '/docs/:path*'
-  ],
+  matcher: ['/investor-hub', '/investor-hub/:path*', '/docs/:path*']
 };
