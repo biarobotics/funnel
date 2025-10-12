@@ -10,15 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Brand Styles: black / white / steel gray, with subtle animated background -->
   <style>
     :root{
-      --bg:#0b0d12;      /* near-black */
-      --fg:#f5f5f5;      /* white-ish */
-      --muted:#9ca3af;   /* steel gray */
-      --panel:#12151d;   /* darker panel */
-      --line:#232832;    /* steel border */
-      --accent:#d1d5db;  /* light gray for UI */
+      --bg:#0b0d12; --fg:#f5f5f5; --muted:#9ca3af; --panel:#12151d; --line:#232832;
     }
     html,body{height:100%;background:var(--bg);color:var(--fg);font-family:Inter,system-ui;-webkit-font-smoothing:antialiased}
     header{background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
@@ -28,33 +22,15 @@
     .card{transition:transform .2s ease, box-shadow .2s ease}
     .card:hover{transform:translateY(-4px)}
     .link{color:#fff;text-decoration:underline}
-
-    /* ---- Animated Futuristic Background (subtle, readable) ---- */
-    .bg-wrap{
-      position:fixed; inset:0; z-index:-1; overflow:hidden; background:var(--bg);
-    }
-    /* animated gradient haze */
-    .glow{
-      position:absolute; width:1200px; height:1200px; border-radius:50%;
-      filter: blur(120px); opacity:.22; background: radial-gradient(closest-side, #ffffff 0%, rgba(255,255,255,0) 70%);
-      animation: float 18s ease-in-out infinite alternate;
-    }
-    .glow.g2{left:-200px; top:-200px; transform:translateZ(0); opacity:.18; animation-duration:22s}
-    .glow.g3{right:-300px; bottom:-300px; opacity:.16; animation-duration:26s}
-    @keyframes float{
-      0%{transform:translate(-40px,-20px) scale(1.0)}
-      100%{transform:translate(40px,20px) scale(1.06)}
-    }
-    /* faint grid overlay */
-    .gridfx{
-      position:absolute; inset:0; background:
-        linear-gradient(to right, rgba(255,255,255,.035) 1px, transparent 1px) 0 0/64px 64px,
-        linear-gradient(to bottom, rgba(255,255,255,.035) 1px, transparent 1px) 0 0/64px 64px;
-      mask-image: radial-gradient(ellipse at 50% 40%, rgba(0,0,0,.75), rgba(0,0,0,1) 60%);
-      pointer-events:none;
-    }
-    /* readability wrapper for hero text */
-    .hero-copy{ text-shadow: 0 1px 0 rgba(0,0,0,.35); }
+    .bg-wrap{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
+    .glow{position:absolute;width:1200px;height:1200px;border-radius:50%;filter:blur(120px);opacity:.22;background:radial-gradient(closest-side,#ffffff 0%,rgba(255,255,255,0) 70%);animation:float 18s ease-in-out infinite alternate}
+    .g2{left:-200px;top:-200px;opacity:.18;animation-duration:22s}
+    .g3{right:-300px;bottom:-300px;opacity:.16;animation-duration:26s}
+    @keyframes float{0%{transform:translate(-40px,-20px) scale(1.0)}100%{transform:translate(40px,20px) scale(1.06)}}
+    .gridfx{position:absolute;inset:0;background:
+      linear-gradient(to right, rgba(255,255,255,.035) 1px, transparent 1px) 0 0/64px 64px,
+      linear-gradient(to bottom, rgba(255,255,255,.035) 1px, transparent 1px) 0 0/64px 64px;
+      mask-image: radial-gradient(ellipse at 50% 40%, rgba(0,0,0,.75), rgba(0,0,0,1) 60%);pointer-events:none}
   </style>
 </head>
 
@@ -72,7 +48,6 @@
     <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3">
         <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 border border-white/10">
-          <!-- simple monogram icon -->
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" stroke="#9ca3af" stroke-width="1.4"/>
             <path d="M7 9l5 3 5-3" stroke="#e5e7eb" stroke-width="1.4"/>
@@ -89,43 +64,32 @@
   </header>
 
   <!-- Hero -->
-<section class="relative overflow-hidden">
-  <!-- Futuristic background image -->
-  <div class="absolute inset-0">
-   <img
-  src="/Funnel%20Picture.png"
-  alt="Futuristic smart city community by BiaRobotics"
-  class="h-full w-full object-cover object-center opacity-60"
-/>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/70 to-black/90"></div>
-  </div>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/Funnel%20Picture.png" alt="Futuristic smart city community by BiaRobotics"
+           class="h-full w-full object-cover object-center opacity-60" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/70 to-black/90"></div>
+    </div>
 
-  <!-- Hero Content -->
-  <div class="relative z-10 mx-auto max-w-7xl px-4 pt-24 pb-28">
-    <div class="max-w-2xl">
-      <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
-        Robotics • 3D Printing • Modular • Hybrid
-      </p>
-      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-white drop-shadow-lg">
-        Building the <span class="text-white/90">Future of Housing</span>
-      </h1>
-      <p class="mt-6 text-lg text-white/80 max-w-xl">
-        Partner with us to develop next-generation housing through robotics-enabled
-        construction — 3D printed, modular, and hybrid systems designed for scalable, sustainable growth.
-      </p>
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a href="#funnels"
-           class="bg-white text-black font-semibold px-6 py-3 rounded-xl hover:bg-gray-200 transition">
-          Choose Your Path →
-        </a>
-        <a href="#subscribe"
-           class="border border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition">
-          Get Investor Updates
-        </a>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 pt-24 pb-28">
+      <div class="max-w-2xl">
+        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+          Robotics • 3D Printing • Modular • Hybrid
+        </p>
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-white drop-shadow-lg">
+          Building the <span class="text-white/90">Future of Housing</span>
+        </h1>
+        <p class="mt-6 text-lg text-white/80 max-w-xl">
+          Partner with us to develop next-generation housing through robotics-enabled
+          construction — 3D printed, modular, and hybrid systems designed for scalable, sustainable growth.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="#funnels" class="bg-white text-black font-semibold px-6 py-3 rounded-xl hover:bg-gray-200 transition">Choose Your Path →</a>
+          <a href="#subscribe" class="border border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition">Get Investor Updates</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Partner Paths -->
   <section id="funnels" class="mx-auto max-w-7xl px-4 pb-6 pt-2">
@@ -151,25 +115,18 @@
     </div>
   </section>
 
-<!-- Newsletter -->
-<section id="subscribe" class="mx-auto max-w-3xl px-4 py-16 text-center">
-  <div class="glass rounded-3xl p-8 md:p-12">
-    <h3 class="text-2xl font-bold mb-3">The Brief — Robotics × Housing</h3>
-    <p class="text-sm text-white/70 mb-8">
-      Monthly investor notes, project spotlights, and insights. No spam, ever.
-    </p>
-
-    <!-- Single Button -->
-    <a href="https://substack.com/@carldavid3" target="_blank"
-       class="inline-flex items-center justify-center rounded-xl bg-white text-black font-semibold px-6 py-3 text-base shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
-       Subscribe on Substack →
-    </a>
-
-    <p class="mt-6 text-xs text-white/50">
-      Questions? <a href="mailto:carl@biarobotics.com" class="underline">carl@biarobotics.com</a>
-    </p>
-  </div>
-</section>
+  <!-- Newsletter -->
+  <section id="subscribe" class="mx-auto max-w-3xl px-4 py-16 text-center">
+    <div class="glass rounded-3xl p-8 md:p-12">
+      <h3 class="text-2xl font-bold mb-3">The Brief — Robotics × Housing</h3>
+      <p class="text-sm text-white/70 mb-8">Monthly investor notes, project spotlights, and insights. No spam, ever.</p>
+      <a href="https://substack.com/@carldavid3" target="_blank"
+         class="inline-flex items-center justify-center rounded-xl bg-white text-black font-semibold px-6 py-3 text-base shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
+         Subscribe on Substack →
+      </a>
+      <p class="mt-6 text-xs text-white/50">Questions? <a href="mailto:carl@biarobotics.com" class="underline">carl@biarobotics.com</a></p>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer id="contact" class="border-t border-white/10">
