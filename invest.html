@@ -36,8 +36,10 @@
       border-radius: 10px;
       padding: 10px 18px;
       font-weight: 700;
+      transition: opacity .15s ease, transform .15s ease;
     }
     .btn:hover { filter: brightness(0.9); }
+    .btn[disabled] { opacity: .6; cursor: not-allowed; transform: none !important; }
   </style>
 </head>
 
@@ -57,7 +59,7 @@
       </p>
 
       <!-- Investor Form -->
-      <form action="https://formspree.io/f/meorrrol" method="POST" class="grid gap-4">
+      <form id="investForm" action="https://formspree.io/f/xovkkkvk" method="POST" class="grid gap-4">
         <label class="text-sm">
           Full Name
           <input type="text" name="name" required
@@ -109,8 +111,9 @@
         <input type="hidden" name="_subject" value="Investor Inquiry — BiaRobotics">
         <input type="hidden" name="_replyto" value="carl@biarobotics.com">
         <input type="text" name="_gotcha" style="display:none">
-        <input type="hidden" name="_redirect" value="https://biarobotics-funnel.vercel.app/success.html">
-        <button type="submit" class="btn mt-2">Join Investor List →</button>
+
+        <button id="submitBtn" type="submit" class="btn mt-2">Join Investor List →</button>
+        <p id="status" class="text-xs text-white/60 mt-2 h-4"></p>
       </form>
 
       <p class="mt-6 text-xs text-white/50 text-center">
@@ -124,6 +127,51 @@
     © <span id="y"></span> BIA Robotics
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('investForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusEl = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      const accredited = data.get('accredited'); // "Yes" or "No"
+
+      // UX: disable button & show status
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+      statusEl.textContent = 'Sending your info securely…';
+
+      try {
+        const resp = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (resp.ok) {
+          // Route based on accreditation answer
+          if (accredited === 'Yes') {
+            window.location.href = '/accreditation.html?from=invest';
+          } else {
+            window.location.href = '/not-eligible.html';
+          }
+        } else {
+          statusEl.textContent = '';
+          alert('There was an issue submitting the form. Please try again or email carl@biarobotics.com.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Join Investor List →';
+        }
+      } catch (err) {
+        statusEl.textContent = '';
+        alert('Network error. Please try again or email carl@biarobotics.com.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join Investor List →';
+      }
+    });
+  </script>
 </body>
 </html>
