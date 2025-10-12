@@ -1,3 +1,4 @@
+// middleware.js
 import { NextResponse } from 'next/server';
 
 function makeSetCookie(name, value, opts = {}) {
@@ -11,26 +12,7 @@ function makeSetCookie(name, value, opts = {}) {
 }
 
 export function middleware(req) {
-  const url = req.nextUrl.clone();
-  const pathname = url.pathname;
-
-  // Public files and routes (NO gate)
-  const allowlist = [
-    /^\/_next\//,
-    /^\/favicon\.ico$/,
-    /^\/robots\.txt$/,
-    /^\/unlock(\.html)?$/,
-    /^\/success(\.html)?$/,
-    /^\/index(\.html)?$/,
-    /^\/land(\.html)?$/,   // <-- public
-    /^\/build(\.html)?$/,  // <-- public
-    /^\/invest(\.html)?$/, // your investor opt-in form stays public
-    /^\/assets\//,
-    /^\/public\//          // in case assets are referenced that way
-  ];
-  if (allowlist.some((re) => re.test(pathname))) return NextResponse.next();
-
-  // Everything else requires token (e.g., /investor-hub, docs, etc.)
+  // This middleware only runs on paths defined in `config.matcher` below.
   const cookie = req.cookies.get('site_unlocked')?.value;
   if (cookie === '1') return NextResponse.next();
 
@@ -55,6 +37,11 @@ export function middleware(req) {
   return NextResponse.redirect(redirectTo);
 }
 
+// 👇 ONLY protect these paths.
+// Add more private areas as needed (e.g., '/docs/:path*').
 export const config = {
-  matcher: ['/((?!_next/|.*\\.(?:png|jpg|jpeg|gif|svg|ico|webp|css|js|map|txt|pdf)).*)']
+  matcher: [
+    '/investor-hub',     // hub page
+    '/docs/:path*'       // any private docs folder you add later (optional)
+  ]
 };
