@@ -1,47 +1,44 @@
 // middleware.js
 import { NextResponse } from 'next/server';
 
-function makeSetCookie(name, value, opts = {}) {
-  const parts = [`${name}=${value}`];
-  if (opts.maxAge) parts.push(`Max-Age=${opts.maxAge}`);
-  if (opts.httpOnly) parts.push('HttpOnly');
-  if (opts.secure) parts.push('Secure');
-  if (opts.sameSite) parts.push(`SameSite=${opts.sameSite}`);
-  if (opts.path) parts.push(`Path=${opts.path}`);
-  return parts.join('; ');
+// Build a Set-Cookie header (Edge-safe)
+function setUnlockCookie(res) {
+  // 30 days
+  res.headers.set(
+    'Set-Cookie',
+    'site_unlocked=1; Max-Age=2592000; Path=/; HttpOnly; Secure; SameSite=Lax'
+  );
 }
 
 export function middleware(req) {
-  // This middleware only runs on paths defined in `config.matcher` below.
-  const cookie = req.cookies.get('site_unlocked')?.value;
-  if (cookie === '1') return NextResponse.next();
+  const url = req.nextUrl;
+  const pathname = url.pathname;
 
-  const accessToken = req.nextUrl.searchParams.get('access');
-  const expected = process.env.ACCESS_TOKEN;
+  // If already unlocked via cookie → allow
+  const unlocked = req.cookies.get('site_unlocked')?.value === '1';
+  if (unlocked) return NextResponse.next();
 
-  if (accessToken && expected && accessToken === expected) {
-    const res = NextResponse.redirect(req.nextUrl.pathname);
-    const sc = makeSetCookie('site_unlocked', '1', {
-      maxAge: 60 * 60 * 24 * 30,
-      httpOnly: true,
-      secure: true,
-      sameSite: 'Lax',
-      path: '/'
-    });
-    res.headers.set('Set-Cookie', sc);
+  // If access token present and correct → set cookie and allow
+  const token = url.searchParams.get('access');
+  const expected = process.env.ACCESS_TOKEN; // <-- set this in Vercel Env Vars
+
+  if (token && expected && token === expected) {
+    const res = NextResponse.redirect(new URL(pathname, req.url));
+    setUnlockCookie(res);
     return res;
   }
 
-  const redirectTo = new URL('/unlock.html', req.url);
-  redirectTo.searchParams.set('r', req.nextUrl.pathname + (req.nextUrl.search || ''));
-  return NextResponse.redirect(redirectTo);
+  // Otherwise send to unlock page (preserve return path)
+  const unlock = new URL('/unlock.html', req.url);
+  unlock.searchParams.set('r', pathname + (url.search || ''));
+  return NextResponse.redirect(unlock);
 }
 
-// 👇 ONLY protect these paths.
-// Add more private areas as needed (e.g., '/docs/:path*').
+// IMPORTANT: limit the middleware to ONLY the private routes
 export const config = {
   matcher: [
-    '/investor-hub',     // hub page
-    '/docs/:path*'       // any private docs folder you add later (optional)
-  ]
+    '/investor-hub',
+    '/investor-hub/:path*',
+    '/docs/:path*'
+  ],
 };
