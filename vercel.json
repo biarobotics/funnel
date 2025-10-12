@@ -1,15 +1,5 @@
 {
   "routes": [
-    { "src": "^/$",        "dest": "/index.html" },
-    { "src": "^/land$",    "dest": "/land.html" },
-    { "src": "^/invest$",  "dest": "/invest.html" },
-    { "src": "^/build$",   "dest": "/build.html" },
-
-    { "src": "^/investor-hub$", "dest": "/investor-hub.html" },
-    { "src": "^/success$",      "dest": "/success.html" },
-    { "src": "^/verify$",       "dest": "/verify.html" },
-    { "src": "^/unlock$",       "dest": "/unlock.html" },
-
     { "src": "^/public/(.*)$", "dest": "/$1" }
   ]
 }
