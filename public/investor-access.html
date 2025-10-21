@@ -1,157 +1,134 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Investor Access — BIA Robotics × Ayzen Capital</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Investor Access — Bia Robotics</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --bg:#0b0d12; --fg:#f5f5f5; --muted:#9ca3af; --line:#232832; }
+    :root { --bg:#0b0d12; --fg:#f5f5f5; --line:#232832; }
     html,body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui;-webkit-font-smoothing:antialiased}
     .glass{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px}
     .btn{background:#fff;color:#000;border-radius:12px;padding:10px 16px;font-weight:700}
     .btn:hover{filter:brightness(.92)}
-    a.link{color:#fff;text-decoration:underline}
+    .link{color:#fff;text-decoration:underline}
+    input,textarea,select{background:#00000040;border:1px solid var(--line);border-radius:10px;padding:.65rem .8rem}
   </style>
-
-  <!--
-    🔐 HOW TO SET THE PASSWORD (takes ~10 seconds)
-    1) Open your browser console (Cmd+Opt+J on Mac, Ctrl+Shift+J on Windows)
-    2) Paste this and press Enter, replacing YOUR_PASSWORD with your secret:
-       (async s => console.log(
-         Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s))))
-           .map(b=>b.toString(16).padStart(2,"0")).join("")
-       ))("YOUR_PASSWORD");
-
-    3) Copy the printed long hex string and put it below in PASSWORD_HASH_HEX.
-       The password itself is never stored in this file.
-  -->
 </head>
 <body class="min-h-screen flex flex-col">
 
   <!-- Header -->
   <header class="border-b border-white/10 bg-black/40 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="font-semibold tracking-wide">BIA Robotics × Ayzen Capital — Investor Access</h1>
-      <nav class="text-sm">
-        <a href="/" class="text-white/60 hover:text-white">← Back to Home</a>
-      </nav>
+      <h1 class="font-semibold tracking-wide">Bia Robotics • Investor Access</h1>
+      <a href="/" class="text-white/60 hover:text-white text-sm">← Back to Home</a>
     </div>
   </header>
 
+  <!-- Main -->
   <main class="flex-1">
-    <!-- ============ LOCK PANEL (shown first) ============ -->
-    <section id="lock" class="max-w-md mx-auto p-6 mt-16 glass">
-      <h2 class="text-xl font-bold mb-2">Enter Access Password</h2>
-      <p class="text-white/70 text-sm mb-4">
+    <!-- Lock panel -->
+    <section id="lock" class="max-w-xl mx-auto p-6 mt-16 glass">
+      <h2 class="text-2xl font-extrabold mb-3">Enter Access Password</h2>
+      <p class="text-white/70 text-sm mb-6">
         This area is restricted to verified investors. If you don’t have the password,
         please complete verification or reply to your approval email.
       </p>
 
-      <div class="space-y-3">
-        <label class="block text-sm">
-          Password
-          <input id="pw" type="password"
-                 class="mt-1 w-full rounded-lg bg-black/30 border border-[var(--line)] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white/30" />
-        </label>
-        <button id="unlockBtn" class="btn w-full">Unlock →</button>
-        <p id="err" class="text-red-400 text-sm mt-2 hidden">Incorrect password. Please try again.</p>
-      </div>
+      <label class="block text-sm mb-3">
+        Password
+        <input id="pw" type="password" class="mt-1 w-full focus:outline-none focus:ring-2 focus:ring-white/30" />
+      </label>
 
-      <div class="text-xs text-white/50 mt-4 space-y-2">
-        <p>Need access? Submit accreditation and identity here:</p>
-        <p>• <a class="link" href="/verify" title="Accreditation & Identity Form">Investor Verification Form</a></p>
-        <p>• Or email <a class="link" href="mailto:carl@biarobotics.com">carl@biarobotics.com</a></p>
+      <button id="go" class="btn w-full">Unlock →</button>
+      <p id="err" class="text-red-400 text-sm mt-3 hidden">Incorrect password. Please try again.</p>
+
+      <div class="mt-8 text-sm text-white/70">
+        <div class="font-semibold mb-1">Need access?</div>
+        <ul class="list-disc list-inside space-y-1">
+          <li>
+            Submit accreditation & ID here:
+            <a class="link" href="https://formspree.io/f/mjkadwjw" target="_blank">Investor Verification Form</a>
+            <span class="text-white/40">(file uploads require upgraded plan; otherwise email docs below)</span>
+          </li>
+          <li>Email: <a class="link" href="mailto:carl@biarobotics.com">carl@biarobotics.com</a></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ============ CONTENT (hidden until unlocked) ============ -->
-    <section id="content" class="hidden">
-      <!-- Hero -->
-      <section class="max-w-6xl mx-auto text-center py-14 px-4">
-        <h2 class="text-4xl font-extrabold mb-3">Verified Investor Materials</h2>
-        <p class="text-white/70 max-w-2xl mx-auto">
-          Private data room and offering materials for current opportunities.
-          Sharing is disabled. View-only access is enforced.
+    <!-- Content (revealed after unlock) -->
+    <section id="content" class="max-w-6xl mx-auto px-4 py-12 hidden">
+      <h2 class="text-3xl font-extrabold mb-8">Verified Investor Materials</h2>
+
+      <!-- Data room / Drive access -->
+      <div class="glass p-6">
+        <h3 class="text-xl font-bold mb-2">Secure Data Room (View-Only)</h3>
+        <p class="text-white/70 text-sm mb-4">
+          Verified investors can request access to the secure Google Drive data room.
+          Access is manually granted and restricted to <strong>View-Only</strong>.
         </p>
-      </section>
 
-      <section class="max-w-6xl mx-auto px-4 pb-12 grid md:grid-cols-3 gap-6">
-        <!-- Shelbyville -->
-        <article class="glass p-6">
-          <h3 class="text-lg font-bold mb-1">Shelbyville — Build-to-Rent (74 Units)</h3>
-          <p class="text-white/70 text-sm mb-4">
-            3D-printed BTR community. Standardized quad/duplex productization, scale-ready deployment.
-          </p>
-          <ul class="text-sm space-y-2">
-            <!-- Replace these hrefs with your actual /docs or Drive file links as you wish -->
-            <li>📄 <a class="link" href="/docs/Shelbyville_BTR_AyzenCapital_BIA_Robotics.docx" target="_blank">Summary (DOCX)</a></li>
-            <li>📊 <a class="link" href="/docs/Shelbyville_Proforma.pdf" target="_blank">Pro Forma (PDF)</a></li>
-            <li>📅 <a class="link" href="https://calendly.com/carl-biarobotics/30min" target="_blank">Book time with the GP</a></li>
+        <a
+          href="https://drive.google.com/drive/folders/1qummHtmJpmYNN-WqTvCwNcrUC4wS9R6M?usp=sharing"
+          target="_blank"
+          class="btn inline-block"
+        >
+          🔒 Request Drive Access
+        </a>
+
+        <p class="text-xs text-white/50 mt-4">
+          Once approved, you’ll receive an email from Google Drive confirming access.
+          Editing, commenting, downloading (if restricted), and resharing are disabled.
+        </p>
+
+        <div class="mt-6 text-xs text-white/60 border-t border-white/10 pt-4">
+          <strong>Documents available:</strong>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Private Offering Memorandum (POM)</li>
+            <li>Investor Decks & Pro Formas</li>
+            <li>Market Studies & Construction Details</li>
+            <li>Subscription Documents (upon request)</li>
           </ul>
-        </article>
+        </div>
+      </div>
 
-        <!-- Sugarmill Woods -->
-        <article class="glass p-6">
-          <h3 class="text-lg font-bold mb-1">Sugarmill Woods — For-Sale (99 Lots)</h3>
-          <p class="text-white/70 text-sm mb-4">
-            For-sale subdivision utilizing robotics-enabled construction. Strong absorption and cost efficiency.
-          </p>
-          <ul class="text-sm space-y-2">
-            <li>📄 <a class="link" href="/docs/Sugarmill_Woods_For_Sale_Summary.docx" target="_blank">Summary (DOCX)</a></li>
-            <li>📊 <a class="link" href="/docs/Sugarmill_Proforma.pdf" target="_blank">Pro Forma (PDF)</a></li>
-            <li>📅 <a class="link" href="https://calendly.com/carl-biarobotics/30min" target="_blank">Book time with the GP</a></li>
-          </ul>
-        </article>
-
-        <!-- Victory Crossings -->
-        <article class="glass p-6">
-          <h3 class="text-lg font-bold mb-1">Victory Crossings — BTR (64 Units)</h3>
-          <p class="text-white/70 text-sm mb-4">
-            Quadplex-style BTR. Estimated rents ~$1,400/month. Optimized for replication and speed to occupancy.
-          </p>
-          <ul class="text-sm space-y-2">
-            <li>📄 <a class="link" href="/docs/Victory_Crossings_BTR_Summary.docx" target="_blank">Summary (DOCX)</a></li>
-            <li>📊 <a class="link" href="/docs/Victory_Crossings_Proforma.pdf" target="_blank">Pro Forma (PDF)</a></li>
-            <li>📅 <a class="link" href="https://calendly.com/carl-biarobotics/30min" target="_blank">Book time with the GP</a></li>
-          </ul>
-        </article>
-      </section>
-
-      <!-- Secure Data Room (Drive) -->
-      <section class="max-w-6xl mx-auto px-4 pb-16">
+      <!-- Project tiles (non-sensitive summaries; detailed docs live in Drive) -->
+      <div class="grid md:grid-cols-3 gap-6 mt-10">
         <div class="glass p-6">
-          <h3 class="text-xl font-bold mb-2">Secure Investor Data Room</h3>
-          <p class="text-white/70 text-sm mb-4">
-            Verified investors can request access to the Google Drive data room below.
-            Access is manually approved and restricted to <strong>View-Only</strong>.
-          </p>
-          <a href="https://drive.google.com/drive/folders/1qummHtmJpmYNN-WqTvCwNcrUC4wS9R6M?usp=sharing" target="_blank" class="btn inline-block">
-            🔒 Request Drive Access
+          <h3 class="font-bold text-lg mb-2">Shelbyville Build-to-Rent (74 Units)</h3>
+          <p class="text-sm text-white/70 mb-4">BTR community leveraging robotics/3D printing for scale.</p>
+          <a class="link text-sm" target="_blank"
+             href="https://drive.google.com/drive/folders/1qummHtmJpmYNN-WqTvCwNcrUC4wS9R6M?usp=sharing">
+            View in Data Room →
           </a>
-          <p class="text-xs text-white/50 mt-3">
-            Once approved, Google will email you a confirmation. Editing, commenting, resharing, and downloads
-            can be restricted at the folder or file level.
-          </p>
         </div>
-      </section>
 
-      <!-- Compliance Note -->
-      <section class="max-w-6xl mx-auto px-4 pb-20">
         <div class="glass p-6">
-          <h4 class="font-semibold mb-2">Accreditation & Compliance</h4>
-          <p class="text-sm text-white/70">
-            Access to private offering materials is limited to verified accredited investors in accordance
-            with applicable securities regulations. By proceeding, you confirm your accreditation status.
-            Materials are confidential and not for redistribution.
-          </p>
+          <h3 class="font-bold text-lg mb-2">Sugarmill Woods For-Sale (99 Lots)</h3>
+          <p class="text-sm text-white/70 mb-4">For-sale subdivision using 3D-printed construction.</p>
+          <a class="link text-sm" target="_blank"
+             href="https://drive.google.com/drive/folders/1qummHtmJpmYNN-WqTvCwNcrUC4wS9R6M?usp=sharing">
+            View in Data Room →
+          </a>
         </div>
-      </section>
+
+        <div class="glass p-6">
+          <h3 class="font-bold text-lg mb-2">Victory Crossings BTR (64 Units)</h3>
+          <p class="text-sm text-white/70 mb-4">Quadplex-style BTR community. Est. rents ~$1,400/mo.</p>
+          <a class="link text-sm" target="_blank"
+             href="https://drive.google.com/drive/folders/1qummHtmJpmYNN-WqTvCwNcrUC4wS9R6M?usp=sharing">
+            View in Data Room →
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-10 text-sm text-white/60">
+        Questions? Email <a class="link" href="mailto:carl@biarobotics.com">carl@biarobotics.com</a>
+      </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="border-t border-white/10 text-center text-xs text-white/50 py-6">
     © <span id="y"></span> BIA Robotics • Ayzen Capital
   </footer>
@@ -159,31 +136,37 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // ===== Single-password gate (SHA-256 hash, no plaintext password in file) =====
-    // 1) Generate your hash (see instructions at top of file) and paste it below.
-    const PASSWORD_HASH_HEX = "HASH_HERE"; // <-- REPLACE with the generated hex string
+    // ===== Password gate (SHA-256; no plain text in source) =====
+    // 1) Choose a password, make its SHA-256 hash in your browser console:
+    //    (async s => console.log(
+    //      Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s))))
+    //        .map(b=>b.toString(16).padStart(2,"0")).join("")
+    //    ))("YOUR_PASSWORD");
+    // 2) Paste the hex string below:
+
+    const PASSWORD_HASH_HEX = "HASH_HERE"; // <--- REPLACE with your hash
 
     async function sha256Hex(str){
       const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
       return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
     }
 
-    function showContent(){
+    function unlockUI(){
       document.getElementById('lock').classList.add('hidden');
       document.getElementById('content').classList.remove('hidden');
-      sessionStorage.setItem('bia_investor_unlocked','1'); // persist for this tab/session
+      sessionStorage.setItem('bia_investor_unlocked','1'); // keep unlocked for this tab
     }
 
-    // Auto-unlock if validated earlier in this session
+    // Auto-unlock if already validated this session
     if (sessionStorage.getItem('bia_investor_unlocked') === '1') {
-      showContent();
+      unlockUI();
     }
 
-    document.getElementById('unlockBtn').addEventListener('click', async () => {
+    document.getElementById('go').addEventListener('click', async () => {
       const pw = document.getElementById('pw').value.trim();
       const ok = (await sha256Hex(pw)) === PASSWORD_HASH_HEX;
       document.getElementById('err').classList.toggle('hidden', ok);
-      if (ok) showContent();
+      if (ok) unlockUI();
     });
   </script>
 </body>
