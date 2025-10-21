@@ -1,91 +1,157 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Investor Access — Bia Robotics</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Investor Access — BIA Robotics × Ayzen Capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --bg:#0b0d12; --fg:#f5f5f5; --line:#232832; }
+    :root { --bg:#0b0d12; --fg:#f5f5f5; --muted:#9ca3af; --line:#232832; }
     html,body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui;-webkit-font-smoothing:antialiased}
     .glass{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px}
     .btn{background:#fff;color:#000;border-radius:12px;padding:10px 16px;font-weight:700}
     .btn:hover{filter:brightness(.92)}
     a.link{color:#fff;text-decoration:underline}
   </style>
+
+  <!--
+    🔐 HOW TO SET THE PASSWORD (takes ~10 seconds)
+    1) Open your browser console (Cmd+Opt+J on Mac, Ctrl+Shift+J on Windows)
+    2) Paste this and press Enter, replacing YOUR_PASSWORD with your secret:
+       (async s => console.log(
+         Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s))))
+           .map(b=>b.toString(16).padStart(2,"0")).join("")
+       ))("YOUR_PASSWORD");
+
+    3) Copy the printed long hex string and put it below in PASSWORD_HASH_HEX.
+       The password itself is never stored in this file.
+  -->
 </head>
 <body class="min-h-screen flex flex-col">
 
   <!-- Header -->
   <header class="border-b border-white/10 bg-black/40 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="font-semibold tracking-wide">Bia Robotics • Investor Access</h1>
-      <a href="/" class="text-white/60 hover:text-white text-sm">← Back to Home</a>
+      <h1 class="font-semibold tracking-wide">BIA Robotics × Ayzen Capital — Investor Access</h1>
+      <nav class="text-sm">
+        <a href="/" class="text-white/60 hover:text-white">← Back to Home</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Main -->
   <main class="flex-1">
-    <!-- Lock panel -->
+    <!-- ============ LOCK PANEL (shown first) ============ -->
     <section id="lock" class="max-w-md mx-auto p-6 mt-16 glass">
       <h2 class="text-xl font-bold mb-2">Enter Access Password</h2>
       <p class="text-white/70 text-sm mb-4">
-        This area is restricted. If you don’t have the password, please reply to your verification email.
+        This area is restricted to verified investors. If you don’t have the password,
+        please complete verification or reply to your approval email.
       </p>
-      <label class="block text-sm mb-3">
-        Password
-        <input id="pw" type="password"
-               class="mt-1 w-full rounded-lg bg-black/30 border border-[var(--line)] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white/30" />
-      </label>
-      <button id="go" class="btn">Unlock →</button>
-      <p id="err" class="text-red-400 text-sm mt-3 hidden">Incorrect password. Please try again.</p>
-      <p class="text-xs text-white/50 mt-4">Tip: you can change the password by updating one line in this file.</p>
+
+      <div class="space-y-3">
+        <label class="block text-sm">
+          Password
+          <input id="pw" type="password"
+                 class="mt-1 w-full rounded-lg bg-black/30 border border-[var(--line)] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white/30" />
+        </label>
+        <button id="unlockBtn" class="btn w-full">Unlock →</button>
+        <p id="err" class="text-red-400 text-sm mt-2 hidden">Incorrect password. Please try again.</p>
+      </div>
+
+      <div class="text-xs text-white/50 mt-4 space-y-2">
+        <p>Need access? Submit accreditation and identity here:</p>
+        <p>• <a class="link" href="/verify" title="Accreditation & Identity Form">Investor Verification Form</a></p>
+        <p>• Or email <a class="link" href="mailto:carl@biarobotics.com">carl@biarobotics.com</a></p>
+      </div>
     </section>
 
-    <!-- Content panel (hidden until unlocked) -->
-    <section id="content" class="max-w-6xl mx-auto px-4 py-12 hidden">
-      <h2 class="text-3xl font-extrabold mb-8">Verified Investor Materials</h2>
+    <!-- ============ CONTENT (hidden until unlocked) ============ -->
+    <section id="content" class="hidden">
+      <!-- Hero -->
+      <section class="max-w-6xl mx-auto text-center py-14 px-4">
+        <h2 class="text-4xl font-extrabold mb-3">Verified Investor Materials</h2>
+        <p class="text-white/70 max-w-2xl mx-auto">
+          Private data room and offering materials for current opportunities.
+          Sharing is disabled. View-only access is enforced.
+        </p>
+      </section>
 
-      <div class="grid md:grid-cols-3 gap-6">
+      <section class="max-w-6xl mx-auto px-4 pb-12 grid md:grid-cols-3 gap-6">
         <!-- Shelbyville -->
-        <div class="glass p-5">
-          <h3 class="text-lg font-bold mb-2">Shelbyville Build-to-Rent (74 Units)</h3>
-          <p class="text-white/70 text-sm mb-4">BTR community leveraging 3D printing for scale.</p>
-          <!-- TODO: replace with your actual files/links -->
+        <article class="glass p-6">
+          <h3 class="text-lg font-bold mb-1">Shelbyville — Build-to-Rent (74 Units)</h3>
+          <p class="text-white/70 text-sm mb-4">
+            3D-printed BTR community. Standardized quad/duplex productization, scale-ready deployment.
+          </p>
           <ul class="text-sm space-y-2">
-            <li>📄 <a class="link" href="/docs/Shelbyville_BTR_Summary.docx" target="_blank">Summary (DOCX)</a></li>
-            <li>📊 <a class="link" href="/docs/Shelbyville_Proforma.pdf" target="_blank">Proforma (PDF)</a></li>
+            <!-- Replace these hrefs with your actual /docs or Drive file links as you wish -->
+            <li>📄 <a class="link" href="/docs/Shelbyville_BTR_AyzenCapital_BIA_Robotics.docx" target="_blank">Summary (DOCX)</a></li>
+            <li>📊 <a class="link" href="/docs/Shelbyville_Proforma.pdf" target="_blank">Pro Forma (PDF)</a></li>
+            <li>📅 <a class="link" href="https://calendly.com/carl-biarobotics/30min" target="_blank">Book time with the GP</a></li>
           </ul>
-        </div>
+        </article>
 
-        <!-- Sugarmill -->
-        <div class="glass p-5">
-          <h3 class="text-lg font-bold mb-2">Sugarmill Woods For-Sale (99 Lots)</h3>
-          <p class="text-white/70 text-sm mb-4">For-sale subdivision using 3D-printed construction.</p>
+        <!-- Sugarmill Woods -->
+        <article class="glass p-6">
+          <h3 class="text-lg font-bold mb-1">Sugarmill Woods — For-Sale (99 Lots)</h3>
+          <p class="text-white/70 text-sm mb-4">
+            For-sale subdivision utilizing robotics-enabled construction. Strong absorption and cost efficiency.
+          </p>
           <ul class="text-sm space-y-2">
-            <li>📄 <a class="link" href="/docs/Sugarmill_Summary.docx" target="_blank">Summary (DOCX)</a></li>
-            <li>📊 <a class="link" href="/docs/Sugarmill_Proforma.pdf" target="_blank">Proforma (PDF)</a></li>
+            <li>📄 <a class="link" href="/docs/Sugarmill_Woods_For_Sale_Summary.docx" target="_blank">Summary (DOCX)</a></li>
+            <li>📊 <a class="link" href="/docs/Sugarmill_Proforma.pdf" target="_blank">Pro Forma (PDF)</a></li>
+            <li>📅 <a class="link" href="https://calendly.com/carl-biarobotics/30min" target="_blank">Book time with the GP</a></li>
           </ul>
-        </div>
+        </article>
 
         <!-- Victory Crossings -->
-        <div class="glass p-5">
-          <h3 class="text-lg font-bold mb-2">Victory Crossings BTR (64 Units)</h3>
-          <p class="text-white/70 text-sm mb-4">Quadplex-style BTR community. Est. rents $1,400/mo.</p>
+        <article class="glass p-6">
+          <h3 class="text-lg font-bold mb-1">Victory Crossings — BTR (64 Units)</h3>
+          <p class="text-white/70 text-sm mb-4">
+            Quadplex-style BTR. Estimated rents ~$1,400/month. Optimized for replication and speed to occupancy.
+          </p>
           <ul class="text-sm space-y-2">
-            <li>📄 <a class="link" href="/docs/Victory_Crossings_Summary.docx" target="_blank">Summary (DOCX)</a></li>
-            <li>📊 <a class="link" href="/docs/Victory_Crossings_Proforma.pdf" target="_blank">Proforma (PDF)</a></li>
+            <li>📄 <a class="link" href="/docs/Victory_Crossings_BTR_Summary.docx" target="_blank">Summary (DOCX)</a></li>
+            <li>📊 <a class="link" href="/docs/Victory_Crossings_Proforma.pdf" target="_blank">Pro Forma (PDF)</a></li>
+            <li>📅 <a class="link" href="https://calendly.com/carl-biarobotics/30min" target="_blank">Book time with the GP</a></li>
           </ul>
-        </div>
-      </div>
+        </article>
+      </section>
 
-      <div class="mt-10 text-sm text-white/60">
-        Questions? Email <a class="link" href="mailto:carl@biarobotics.com">carl@biarobotics.com</a>
-      </div>
+      <!-- Secure Data Room (Drive) -->
+      <section class="max-w-6xl mx-auto px-4 pb-16">
+        <div class="glass p-6">
+          <h3 class="text-xl font-bold mb-2">Secure Investor Data Room</h3>
+          <p class="text-white/70 text-sm mb-4">
+            Verified investors can request access to the Google Drive data room below.
+            Access is manually approved and restricted to <strong>View-Only</strong>.
+          </p>
+          <a href="https://drive.google.com/drive/folders/1qummHtmJpmYNN-WqTvCwNcrUC4wS9R6M?usp=sharing" target="_blank" class="btn inline-block">
+            🔒 Request Drive Access
+          </a>
+          <p class="text-xs text-white/50 mt-3">
+            Once approved, Google will email you a confirmation. Editing, commenting, resharing, and downloads
+            can be restricted at the folder or file level.
+          </p>
+        </div>
+      </section>
+
+      <!-- Compliance Note -->
+      <section class="max-w-6xl mx-auto px-4 pb-20">
+        <div class="glass p-6">
+          <h4 class="font-semibold mb-2">Accreditation & Compliance</h4>
+          <p class="text-sm text-white/70">
+            Access to private offering materials is limited to verified accredited investors in accordance
+            with applicable securities regulations. By proceeding, you confirm your accreditation status.
+            Materials are confidential and not for redistribution.
+          </p>
+        </div>
+      </section>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="border-t border-white/10 text-center text-xs text-white/50 py-6">
     © <span id="y"></span> BIA Robotics • Ayzen Capital
   </footer>
@@ -93,17 +159,9 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // ===== Single-password gate (stored as SHA-256 hash) =====
-    // 1) Set your password once, make a hash, and paste that hash below.
-    //    To generate a hash in your browser console:
-    //    (async s => console.log(
-    //      Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s))))
-    //      .map(b=>b.toString(16).padStart(2,"0")).join("")
-    //    ))("YOUR_PASSWORD");
-    //
-    // 2) Replace HASH_HERE with the resulting hex string.
-
-    const PASSWORD_HASH_HEX = "HASH_HERE"; // <-- replace me
+    // ===== Single-password gate (SHA-256 hash, no plaintext password in file) =====
+    // 1) Generate your hash (see instructions at top of file) and paste it below.
+    const PASSWORD_HASH_HEX = "HASH_HERE"; // <-- REPLACE with the generated hex string
 
     async function sha256Hex(str){
       const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
@@ -113,15 +171,15 @@
     function showContent(){
       document.getElementById('lock').classList.add('hidden');
       document.getElementById('content').classList.remove('hidden');
-      sessionStorage.setItem('bia_investor_unlocked','1'); // persist this tab/session
+      sessionStorage.setItem('bia_investor_unlocked','1'); // persist for this tab/session
     }
 
-    // Auto-unlock if already validated this session
+    // Auto-unlock if validated earlier in this session
     if (sessionStorage.getItem('bia_investor_unlocked') === '1') {
       showContent();
     }
 
-    document.getElementById('go').addEventListener('click', async () => {
+    document.getElementById('unlockBtn').addEventListener('click', async () => {
       const pw = document.getElementById('pw').value.trim();
       const ok = (await sha256Hex(pw)) === PASSWORD_HASH_HEX;
       document.getElementById('err').classList.toggle('hidden', ok);
