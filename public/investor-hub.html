@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Investor Hub — Bia Robotics</title>
+  <title>Investor Hub — Bia Robotics × Ayzen Capital</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background-color: #0b0d12; color: white; font-family: Inter, sans-serif; }
@@ -14,19 +14,10 @@
 </head>
 <body>
 
-<!-- 🔒 Accreditation Gate — runs first -->
-<script>
-  // Optional: checks accreditation flag (if you later want to track)
-  const accredited = localStorage.getItem('accredited');
-  if (!accredited) {
-    window.location.href = '/accreditation.html';
-  }
-</script>
-
 <!-- Header -->
 <header class="border-b border-white/10 bg-black/40 backdrop-blur">
   <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <h1 class="font-bold text-lg tracking-wide">Bia Robotics • Investor Hub</h1>
+    <h1 class="font-bold text-lg tracking-wide">Bia Robotics × Ayzen Capital — Investor Hub</h1>
     <a href="/" class="text-white/60 hover:text-white text-sm">← Back to Home</a>
   </div>
 </header>
@@ -48,7 +39,7 @@
     <p class="text-sm text-white/70 mb-4">
       Target: $10M • 8–10% preferred return • 60/40 profit split (Bia Robotics)
     </p>
-    <a href="/accreditation.html" class="btn">View Investor Materials →</a>
+    <a href="/verify.html" class="btn">View Investor Materials →</a>
   </div>
 
   <!-- Shelbyville -->
@@ -57,7 +48,7 @@
     <p class="text-sm text-white/70 mb-4">
       BTR community leveraging 3D printing technology for scalability. Project-level access restricted to verified investors.
     </p>
-    <a href="/accreditation.html" class="btn">View Investor Materials →</a>
+    <a href="/verify.html" class="btn">View Investor Materials →</a>
   </div>
 
   <!-- Sugarmill -->
@@ -66,7 +57,7 @@
     <p class="text-sm text-white/70 mb-4">
       For-sale subdivision featuring Bia Robotics' 3D-printed construction. Strong regional absorption and high efficiency.
     </p>
-    <a href="/accreditation.html" class="btn">View Investor Materials →</a>
+    <a href="/verify.html" class="btn">View Investor Materials →</a>
   </div>
 
   <!-- Victory Crossings -->
@@ -75,15 +66,18 @@
     <p class="text-sm text-white/70 mb-4">
       Quadplex-style BTR community. Estimated rents of $1,400/month. Investor deck accessible after accreditation verification.
     </p>
-    <a href="/accreditation.html" class="btn">View Investor Materials →</a>
+    <a href="/verify.html" class="btn">View Investor Materials →</a>
   </div>
 
 </section>
 
+<!-- Footer -->
 <footer class="border-t border-white/10 py-8 text-center text-sm text-white/50">
-  © <span id="y"></span> Bia Robotics • Ayzen Capital — All Rights Reserved
+  © <span id="y"></span> Bia Robotics × Ayzen Capital — All Rights Reserved
 </footer>
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
