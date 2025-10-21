@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Investor Access — BIA Robotics</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Investor Access — Bia Robotics</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --bg:#0b0d12; --fg:#f5f5f5; --muted:#9ca3af; --line:#232832; }
+    :root { --bg:#0b0d12; --fg:#f5f5f5; --line:#232832; }
     html,body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui;-webkit-font-smoothing:antialiased}
     .glass{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px}
     .btn{background:#fff;color:#000;border-radius:12px;padding:10px 16px;font-weight:700}
-    .btn:hover{filter:brightness(.94)}
+    .btn:hover{filter:brightness(.92)}
     a.link{color:#fff;text-decoration:underline}
-    .note{color:var(--muted);font-size:.95rem}
+    .input{background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:12px;padding:.65rem .9rem;width:100%}
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -25,96 +25,90 @@
     </div>
   </header>
 
-  <!-- Main -->
+  <!-- Lock panel -->
   <main class="flex-1">
-    <!-- Lock panel -->
-    <section id="lock" class="max-w-xl mx-auto p-8 mt-16 glass">
-      <h2 class="text-2xl font-bold mb-2">Enter Access Password</h2>
-      <p class="text-white/70 text-sm mb-4">
-        This area is restricted to verified investors. If you don’t have the password, please complete verification below or reply to your approval email.
+    <section id="lock" class="max-w-xl mx-auto p-6 mt-16 glass">
+      <h2 class="text-2xl font-extrabold mb-3">Enter Access Password</h2>
+      <p class="text-white/70 text-sm mb-5">
+        This area is restricted to verified investors. If you don’t have the password, complete verification or reply to your approval email.
       </p>
 
-      <label class="block text-sm mb-4">
-        Password
-        <input id="pw" type="password"
-               class="mt-2 w-full rounded-lg bg-black/30 border border-[var(--line)] px-3 py-3 focus:outline-none focus:ring-2 focus:ring-white/30" />
-      </label>
-
-      <div class="flex gap-3">
-        <button id="go" class="btn flex-1">Unlock →</button>
-        <button id="clear" class="btn" style="background:#2b2f36;color:#fff">Clear</button>
+      <label class="block text-sm mb-2">Password</label>
+      <div class="flex gap-2 items-center">
+        <input id="pw" type="password" class="input" placeholder="Enter password" autocomplete="current-password"/>
+        <button id="toggle" type="button" class="px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white/80 hover:bg-white/20">
+          Show
+        </button>
       </div>
 
-      <p id="err" class="text-red-400 text-sm mt-3 hidden">Incorrect password. Please try again or request access below.</p>
+      <button id="go" class="btn w-full mt-4">Unlock →</button>
+      <p id="err" class="text-red-400 text-sm mt-3 hidden">Incorrect password. Please try again.</p>
 
-      <div class="mt-6 border-t border-white/6 pt-4">
-        <p class="note mb-2">Need access? Submit accreditation and identity below (manual approval):</p>
-        <ul class="list-disc list-inside text-sm text-white/70">
-          <li><a href="https://formspree.io/f/mjkadwjw" target="_blank" class="link">Investor Verification Form</a> — upload accreditation docs (ID + proof) or attach files via the Formspree project (note: account must allow uploads; if not, they can reply to the confirmation email with attachments)</li>
-          <li class="mt-2">Or email: <a href="mailto:carl@biarobotics.com" class="link">carl@biarobotics.com</a> (please include the same docs).</li>
+      <div class="text-sm text-white/60 mt-6 border-t border-white/10 pt-4">
+        <div class="font-semibold mb-2">Need access?</div>
+        <ul class="list-disc list-inside space-y-1">
+          <li><a class="link" href="/verify.html">Investor Verification Form</a></li>
+          <li>Or email <a class="link" href="mailto:carl@biarobotics.com">carl@biarobotics.com</a></li>
         </ul>
       </div>
-
-      <p class="text-xs text-white/50 mt-4">
-        Tip: you can change the password text directly in this file. For production, consider server-side gating or a hashed comparison instead.
-      </p>
     </section>
 
-    <!-- Content panel (hidden until unlocked) -->
+    <!-- Content (hidden until unlocked) -->
     <section id="content" class="max-w-6xl mx-auto px-4 py-12 hidden">
-      <h2 class="text-3xl font-extrabold mb-6">Verified Investor Materials</h2>
+      <h2 class="text-3xl font-extrabold mb-8">Verified Investor Materials</h2>
 
-      <div class="glass p-6 mb-8">
-        <h3 class="text-lg font-semibold mb-2">Secure Data Room (Google Drive)</h3>
-        <p class="text-sm text-white/70 mb-3">
-          We host investor documents in a restricted Google Drive folder. Approved investors receive view-only access — editing, downloading, or resharing can be restricted in Drive settings.
+      <!-- Drive access helper -->
+      <div class="glass p-6 mb-10">
+        <h3 class="text-lg font-semibold mb-2">Secure Investor Materials</h3>
+        <p class="text-sm text-white/70 mb-4">
+          Verified investors can request access to the secure data room below. Access is manually approved and restricted to <strong>View-Only</strong>.
         </p>
-
         <a href="https://drive.google.com/drive/folders/1qummHtmJpmYNN-WqTvCwNcrUC4wS9R6M?usp=sharing"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="btn inline-block">
-           🔒 Open Secure Drive (view-only) →
-        </a>
-
-        <p class="text-xs text-white/60 mt-4">
-          After approval you'll receive the Drive invite via email. If you don't see it, check spam or reply to carl@biarobotics.com for assistance.
+           target="_blank" class="btn inline-block">🔒 Request Drive Access</a>
+        <p class="text-xs text-white/50 mt-3">
+          Once approved, you’ll receive an email from Google Drive confirming your access. Editing, commenting, and resharing are disabled.
         </p>
+        <div class="mt-6 text-xs text-white/50 border-t border-white/10 pt-4">
+          <strong>Documents typically include:</strong>
+          <ul class="list-disc list-inside text-white/60 mt-2">
+            <li>Offering materials / investor decks / pro formas</li>
+            <li>Market studies and construction details</li>
+            <li>Subscription documents (upon request)</li>
+          </ul>
+        </div>
       </div>
 
+      <!-- Example project tiles (update links as needed) -->
       <div class="grid md:grid-cols-3 gap-6">
-        <!-- Shelbyville -->
         <div class="glass p-5">
           <h3 class="text-lg font-bold mb-2">Shelbyville Build-to-Rent (74 Units)</h3>
           <p class="text-white/70 text-sm mb-4">BTR community leveraging 3D printing for scale.</p>
           <ul class="text-sm space-y-2">
-            <li>📄 <a class="link" href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">Project Summary (DOCX)</a></li>
-            <li>📊 <a class="link" href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">Proforma (PDF)</a></li>
+            <li>📄 <a class="link" href="/docs/Shelbyville_BTR_Summary.docx" target="_blank">Summary (DOCX)</a></li>
+            <li>📊 <a class="link" href="/docs/Shelbyville_Proforma.pdf" target="_blank">Proforma (PDF)</a></li>
           </ul>
         </div>
 
-        <!-- Sugarmill -->
         <div class="glass p-5">
           <h3 class="text-lg font-bold mb-2">Sugarmill Woods For-Sale (99 Lots)</h3>
           <p class="text-white/70 text-sm mb-4">For-sale subdivision using 3D-printed construction.</p>
           <ul class="text-sm space-y-2">
-            <li>📄 <a class="link" href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">Project Summary (DOCX)</a></li>
-            <li>📊 <a class="link" href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">Proforma (PDF)</a></li>
+            <li>📄 <a class="link" href="/docs/Sugarmill_Summary.docx" target="_blank">Summary (DOCX)</a></li>
+            <li>📊 <a class="link" href="/docs/Sugarmill_Proforma.pdf" target="_blank">Proforma (PDF)</a></li>
           </ul>
         </div>
 
-        <!-- Victory Crossings -->
         <div class="glass p-5">
           <h3 class="text-lg font-bold mb-2">Victory Crossings BTR (64 Units)</h3>
-          <p class="text-white/70 text-sm mb-4">Quadplex-style BTR community. Est. rents $1,400/mo.</p>
+          <p class="text-white/70 text-sm mb-4">Quadplex-style BTR • Est. rents $1,400/mo.</p>
           <ul class="text-sm space-y-2">
-            <li>📄 <a class="link" href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">Project Summary (DOCX)</a></li>
-            <li>📊 <a class="link" href="https://drive.google.com/file/d/YOUR_FILE_ID/view" target="_blank">Proforma (PDF)</a></li>
+            <li>📄 <a class="link" href="/docs/Victory_Crossings_Summary.docx" target="_blank">Summary (DOCX)</a></li>
+            <li>📊 <a class="link" href="/docs/Victory_Crossings_Proforma.pdf" target="_blank">Proforma (PDF)</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="mt-8 text-sm text-white/60">
+      <div class="mt-10 text-sm text-white/60">
         Questions? Email <a class="link" href="mailto:carl@biarobotics.com">carl@biarobotics.com</a>
       </div>
     </section>
@@ -128,47 +122,50 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    /*****************************************************************
-     * PASSWORD: OSTRICH (plaintext check)
-     *
-     * You asked the password to be "Ostrich181_!*".
-     *
-     * IMPORTANT: This check is client-side and therefore visible to
-     * anyone who views page source. If you want more obscure storage,
-     * use the SHA-256 hash approach (I can modify for that), or better
-     * — use server-side gating (middleware / token) for production.
-     *****************************************************************/
-    const CLEAR_TEXT_PASSWORD = "Ostrich181_!*"; // <-- your requested password
+    // ===== Password logic (plain compare, trimmed + normalized) =====
+    const SECRET = "Ostrich181_!*";           // << your password
+    const inputEl = document.getElementById('pw');
+    const errEl   = document.getElementById('err');
+
+    function normalize(s){ return (s || "").normalize('NFKC').trim(); }
 
     function showContent(){
       document.getElementById('lock').classList.add('hidden');
       document.getElementById('content').classList.remove('hidden');
-      // Persist for this tab/session so they don't have to re-enter repeatedly
       sessionStorage.setItem('bia_investor_unlocked','1');
     }
 
-    // Already unlocked this session?
+    function tryUnlock(){
+      const ok = normalize(inputEl.value) === normalize(SECRET);
+      errEl.classList.toggle('hidden', ok);
+      if (ok) showContent(); else inputEl.focus();
+    }
+
+    // Enter key submits
+    inputEl.addEventListener('keydown', e => {
+      if (e.key === 'Enter'){ e.preventDefault(); tryUnlock(); }
+    });
+
+    document.getElementById('go').addEventListener('click', tryUnlock);
+
+    // Show/hide toggle
+    document.getElementById('toggle').addEventListener('click', () => {
+      inputEl.type = inputEl.type === 'password' ? 'text' : 'password';
+      document.getElementById('toggle').textContent = inputEl.type === 'password' ? 'Show' : 'Hide';
+      inputEl.focus();
+    });
+
+    // Auto-unlock for this tab if already validated
     if (sessionStorage.getItem('bia_investor_unlocked') === '1') {
       showContent();
     }
 
-    document.getElementById('go').addEventListener('click', () => {
-      const pw = document.getElementById('pw').value || "";
-      const ok = pw === CLEAR_TEXT_PASSWORD;
-      document.getElementById('err').classList.toggle('hidden', ok);
-      if (ok) {
-        showContent();
-      } else {
-        // brief visual shake could be added, but keep simple
-        document.getElementById('pw').focus();
-      }
-    });
-
-    document.getElementById('clear').addEventListener('click', () => {
-      document.getElementById('pw').value = "";
-      document.getElementById('err').classList.add('hidden');
-      document.getElementById('pw').focus();
-    });
+    // Optional: allow ?pw= query (helpful for quick testing)
+    const params = new URLSearchParams(location.search);
+    const qp = params.get('pw');
+    if (qp && normalize(qp) === normalize(SECRET)) {
+      showContent();
+    }
   </script>
 </body>
 </html>
