@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Request Proposal — BIA Robotics</title>
+
+  <!-- Font + Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --bg:#0b0d12; --fg:#f5f5f5; --muted:#9ca3af; --panel:#12151d; --line:#232832;
+    }
+    html,body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui;-webkit-font-smoothing:antialiased}
+    .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line)}
+    .btn{background:#fff;color:#000;border-radius:12px;padding:10px 18px;font-weight:700}
+    .btn:hover{filter:brightness(0.9)}
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+  <header class="p-6 border-b border-white/10">
+    <a href="/" class="font-bold tracking-wide text-lg hover:underline">← Back to Home</a>
+  </header>
+
+  <main class="flex-grow flex items-center justify-center px-4 py-12">
+    <div class="glass rounded-3xl p-8 max-w-lg w-full text-center">
+      <h1 class="text-2xl font-bold mb-4">Request a Proposal</h1>
+      <p class="text-sm text-white/70 mb-6">
+        Let’s collaborate to bring your project to life.  
+        Fill out the form below and our team will follow up within 24–48 hours.
+      </p>
+
+      <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4 text-left">
+        <div>
+          <label class="block text-sm mb-1">Full Name</label>
+          <input name="name" type="text" required class="w-full bg-transparent border border-white/20 rounded-lg p-2 text-white" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Email</label>
+          <input name="email" type="email" required class="w-full bg-transparent border border-white/20 rounded-lg p-2 text-white" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Project Address / City</label>
+          <input name="address" type="text" required class="w-full bg-transparent border border-white/20 rounded-lg p-2 text-white" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Project Type</label>
+          <select name="type" required class="w-full bg-transparent border border-white/20 rounded-lg p-2 text-white">
+            <option value="">Select</option>
+            <option>3D Printed Homes</option>
+            <option>Modular / Panelized</option>
+            <option>Hybrid or Traditional</option>
+            <option>Townhomes / Multi-family</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Number of Units</label>
+          <input name="units" type="number" min="1" class="w-full bg-transparent border border-white/20 rounded-lg p-2 text-white" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Notes</label>
+          <textarea name="notes" rows="3" placeholder="Describe your project..." class="w-full bg-transparent border border-white/20 rounded-lg p-2 text-white"></textarea>
+        </div>
+        <div class="pt-2">
+          <button type="submit" class="btn w-full">Submit Proposal</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="text-center text-xs text-white/50 py-6 border-t border-white/10">
+    © <span id="y"></span> BIA Robotics — All Rights Reserved
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
